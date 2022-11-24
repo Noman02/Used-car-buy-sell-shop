@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { authContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(authContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.error("Logged out!!");
+      })
+      .catch(() => {});
+  };
+
   const menuItems = (
     <>
       <Link className="hover:border-b-2 border-primary mr-3" to="/">
@@ -14,12 +25,25 @@ const Navbar = () => {
         Dashboard
       </Link>
 
-      <Link className="hover:border-b-2 border-primary mr-3" to="/login">
-        Login
-      </Link>
-      <Link className="hover:border-b-2 border-primary mr-3" to="/register">
-        Register
-      </Link>
+      {user?.uid ? (
+        <>
+          <button
+            onClick={handleLogOut}
+            className="text-primary font-medium btn btn-sm"
+          >
+            LOG OUT
+          </button>
+        </>
+      ) : (
+        <>
+          <Link className="hover:border-b-2 border-primary mr-3" to="/login">
+            Login
+          </Link>
+          <Link className="hover:border-b-2 border-primary mr-3" to="/register">
+            Register
+          </Link>
+        </>
+      )}
     </>
   );
   return (
