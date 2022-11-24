@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const { signIn, popupSignUp } = useContext(authContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (data) => {
     const email = data.email;
@@ -17,6 +21,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success("Successfully logged in");
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => {
@@ -85,7 +90,7 @@ const Login = () => {
                 onClick={handlePopUp}
                 aria-label="Login with Google"
                 type="button"
-                className="border border-secondary flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                className="border border-secondary bg-red-500 flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
