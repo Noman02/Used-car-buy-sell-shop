@@ -1,5 +1,7 @@
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../pages/Blog";
+import Dashboard from "../pages/Dashboard/Dashboard";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
@@ -28,5 +30,9 @@ export const routes = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
   },
 ]);
