@@ -57,7 +57,7 @@ const Navbar = () => {
             USED CARS BUY SELL
           </Link>
         </div>
-        <div className="form-control w-96 mr-4">
+        <div className="form-control hidden md:block w-96 mr-4">
           <input
             type="text"
             placeholder="Search"
@@ -67,26 +67,6 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
-        <label
-          htmlFor="dashboard-drawer"
-          tabIndex={2}
-          className="btn btn-ghost lg:hidden"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </label>
       </div>
     </div>
   );
