@@ -1,15 +1,17 @@
 import React from "react";
 
-const CategoryBanner = () => {
+const CategoryBanner = ({ categoryItem }) => {
+  const { category, picture, adds, _id } = categoryItem;
+  console.log(categoryItem);
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
+    <div className="mt-12">
+      <div className="flex justify-center items-center">
+        <div>
+          <img className="lg:w-28" src={picture} alt="" />
+        </div>
+        <div className="ml-4">
+          <h2 className="text-xl">{category}</h2>
+          <p className="text-sm">{adds}</p>
         </div>
       </div>
     </div>

@@ -90,7 +90,7 @@ const Login = () => {
                 onClick={handlePopUp}
                 aria-label="Login with Google"
                 type="button"
-                className="border border-secondary bg-red-500 flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                className="text-white border border-secondary bg-red-500 flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
