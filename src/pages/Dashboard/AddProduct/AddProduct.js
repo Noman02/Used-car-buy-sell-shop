@@ -15,12 +15,10 @@ const AddProduct = () => {
   const imageHostKey = process.env.REACT_APP_imgbb_key;
   const navigate = useNavigate();
 
-  const { data: specialties, isLoading } = useQuery({
-    queryKey: ["specialty"],
+  const { data: category, isLoading } = useQuery({
+    queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch(
-        "https://doctors-portal-server-seven-tan.vercel.app/appointmentSpecialty"
-      );
+      const res = await fetch("http://localhost:5000/category");
       const data = await res.json();
       return data;
     },
@@ -156,9 +154,9 @@ const AddProduct = () => {
             {...register("specialty")}
             className="select select-bordered w-full"
           >
-            {specialties?.map((specialty) => (
-              <option key={specialty._id} value={specialty.name}>
-                {specialty.name}
+            {category?.map((cat) => (
+              <option key={cat._id} value={cat.category}>
+                {cat.category}
               </option>
             ))}
           </select>
