@@ -1,6 +1,7 @@
 import React from "react";
+import { FaPhoneSquareAlt, FaRocketchat } from "react-icons/fa";
 
-const Product = ({ product }) => {
+const Product = ({ product, setOrder }) => {
   const {
     condition,
     description,
@@ -47,18 +48,33 @@ const Product = ({ product }) => {
           <span className="font-medium text-lg"> {manufacture_year}</span>
         </h2>
         <h2 className="">
-          Description:
-          <span className="text-sm"> {description.slice(0, 100)}</span>
+          <span className="font-bold">Description</span> <br></br>
+          <span className="text-sm"> {description.slice(0, 150)}</span>
         </h2>
       </div>
-      <div className="card-body">
-        <h2 className="">
-          Model <span className="font-medium">{model}</span>
-        </h2>
-        <h2 className="">Used {used_time}</h2>
+      <div className="card-body lg:w-2/4 relative">
         <div className="card-actions justify-center">
-          <button className="btn btn-primary">Watch</button>
+          <div className="lg:flex md:flex justify-center items-center border p-4 lg:w-3/4">
+            <p>
+              <FaPhoneSquareAlt className="text-3xl text-secondary mr-3"></FaPhoneSquareAlt>{" "}
+            </p>
+            <p>{number}</p>
+          </div>
         </div>
+        <div className="card-actions justify-evenly">
+          <div className="flex items-center border p-4 lg:w-3/4">
+            <FaRocketchat className="text-xl"></FaRocketchat>
+            <h3 className="ml-3 font-semibold">Chat</h3>
+          </div>
+        </div>
+        <label
+          // disabled={slots.length === 0}
+          htmlFor="order-modal"
+          onClick={() => setOrder(product)}
+          className="btn btn-primary text-white absolute bottom-5 right-10"
+        >
+          ORDER NOW
+        </label>
       </div>
     </div>
   );
