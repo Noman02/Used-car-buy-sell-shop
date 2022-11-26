@@ -1,7 +1,12 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../pages/Blog";
+import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../pages/Dashboard/AllBuyer/AllBuyer";
+import AllSeller from "../pages/Dashboard/AllSeller/AllSeller";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../pages/Dashboard/MyProducts/MyProducts";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
@@ -41,6 +46,33 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/allbuyer",
+        element: <AllBuyer></AllBuyer>,
+      },
+      {
+        path: "/dashboard/allseller",
+        element: <AllSeller></AllSeller>,
+      },
+      {
+        path: "/dashboard/addprodut",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/myproducts",
+        element: <MyProducts></MyProducts>,
+      },
+      {
+        path: "/dashboard/myorders",
+        element: <MyOrders></MyOrders>,
+      },
+    ],
   },
 ]);

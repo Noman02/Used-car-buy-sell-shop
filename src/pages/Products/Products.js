@@ -10,7 +10,6 @@ const Products = () => {
   return (
     <section>
       <div className="grid gap-8">
-        <h3>from products</h3>
         {products?.map((product) => (
           <Product
             key={product._id}
