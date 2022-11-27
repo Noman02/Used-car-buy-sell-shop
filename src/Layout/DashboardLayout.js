@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { authContext } from "../contexts/AuthProvider/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
+import useSeller from "../hooks/useSeller";
 import Navbar from "../Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(authContext);
-  // const [isAdmin] = useAdmin(user?.email);
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
   return (
     <div>
       <Navbar></Navbar>
@@ -26,30 +29,35 @@ const DashboardLayout = () => {
                 Dashboard
               </Link>
             </li>
-            {/* {isAdmin && ( */}
-            <>
-              <li>
-                <Link to="/dashboard/allbuyer">All Buyer </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/allseller">All Seller</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/addprodut">Add A Product</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/myproducts">My Products</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/myorders">My Orders</Link>
-              </li>
-              <li>
-                <Link className="font-bold" to="/dashboard/makeadmin">
-                  Make Admin
-                </Link>
-              </li>
-            </>
-            {/* )} */}
+            {isAdmin && (
+              <>
+                <li>
+                  <Link to="/dashboard/allbuyer">All Buyer </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/allseller">All Seller</Link>
+                </li>
+                <li>
+                  <Link className="font-bold" to="/dashboard/makeadmin">
+                    Make Admin
+                  </Link>
+                </li>
+              </>
+            )}
+            {isSeller && (
+              <>
+                <li>
+                  <Link to="/dashboard/addprodut">Add A Product</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myproducts">My Products</Link>
+                </li>
+              </>
+            )}
+
+            <li>
+              <Link to="/dashboard/myorders">My Orders</Link>
+            </li>
           </ul>
         </div>
       </div>

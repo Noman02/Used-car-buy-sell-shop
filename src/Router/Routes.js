@@ -12,7 +12,9 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
 import Products from "../pages/Products/Products";
+import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -64,11 +66,20 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/dashboard/addprodut",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myproducts",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <SellerRoute>
+            {" "}
+            <MyProducts></MyProducts>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myorders",
@@ -76,7 +87,12 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/dashboard/makeadmin",
-        element: <MakeAdmin></MakeAdmin>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <MakeAdmin></MakeAdmin>
+          </AdminRoute>
+        ),
       },
     ],
   },
