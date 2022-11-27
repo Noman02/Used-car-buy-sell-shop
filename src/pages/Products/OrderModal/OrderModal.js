@@ -4,8 +4,7 @@ import { authContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const OrderModal = ({ order, setOrder }) => {
   const { user } = useContext(authContext);
-  const { name, location, model, original_price } = order;
-
+  const { name, location, model, original_price, picture } = order;
   console.log(order);
 
   const handleOrder = (event) => {
@@ -14,12 +13,18 @@ const OrderModal = ({ order, setOrder }) => {
     const fullname = form.fullname.value;
     const email = form.email.value;
     const phone = form.phone.value;
+    const model = form.model.value;
+    const price = form.price.value;
+    const image = form.image.value;
 
     const order = {
-      treatment: name,
-      patient: fullname,
+      category: name,
+      name: fullname,
       email,
       phone,
+      model,
+      price,
+      image,
     };
 
     fetch("http://localhost:5000/orders", {
@@ -59,7 +64,22 @@ const OrderModal = ({ order, setOrder }) => {
           <form onSubmit={handleOrder} className="grid grid-cols-1 gap-4 mt-4">
             <input
               type="text"
-              value={model}
+              value={`Model ${model}`}
+              name="model"
+              disabled
+              className="input input-bordered w-full"
+            />
+            <input
+              type="text"
+              value={`Current Price ${original_price}`}
+              name="price"
+              disabled
+              className="input input-bordered w-full"
+            />
+            <input
+              type="text"
+              value={picture}
+              name="image"
               disabled
               className="input input-bordered w-full"
             />
