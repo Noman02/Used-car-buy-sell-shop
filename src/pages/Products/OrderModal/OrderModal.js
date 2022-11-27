@@ -4,7 +4,7 @@ import { authContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const OrderModal = ({ order, setOrder }) => {
   const { user } = useContext(authContext);
-  const { name, location, model } = order;
+  const { name, location, model, original_price } = order;
 
   console.log(order);
 
@@ -53,7 +53,10 @@ const OrderModal = ({ order, setOrder }) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{name}</h3>
-          <form onSubmit={handleOrder} className="grid grid-cols-1 gap-4 mt-10">
+          <h3 className="text-lg font-bold text-primary">
+            Current Price ${original_price}
+          </h3>
+          <form onSubmit={handleOrder} className="grid grid-cols-1 gap-4 mt-4">
             <input
               type="text"
               value={model}

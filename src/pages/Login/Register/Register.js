@@ -1,13 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../../contexts/AuthProvider/AuthProvider";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const { createUser, updateUser, popupSignUp } = useContext(authContext);
+  const [userEmail, setUserEmail] = useState("");
+  const [token] = useToken(userEmail);
   const navigate = useNavigate();
+
+  if (token) {
+    navigate("/");
+  }
 
   const handleRegister = (data) => {
     const name = data.name;
@@ -42,18 +49,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        getUserToken(email);
-      });
-  };
-
-  const getUserToken = (email) => {
-    fetch(`http://localhost:5000/jwt?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.accessToken) {
-          localStorage.setItem("accessToken", data.accessToken);
-          navigate("/");
-        }
+        setUserEmail(email);
       });
   };
 

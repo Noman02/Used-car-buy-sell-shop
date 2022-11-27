@@ -33,6 +33,7 @@ const Navbar = () => {
           >
             LOG OUT
           </button>
+          <h3 className="ml-2 font-semibold">{user?.displayName}</h3>
         </>
       ) : (
         <>
