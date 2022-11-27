@@ -43,6 +43,11 @@ const DashboardLayout = () => {
               <li>
                 <Link to="/dashboard/myorders">My Orders</Link>
               </li>
+              <li>
+                <Link className="font-bold" to="/dashboard/makeadmin">
+                  Make Admin
+                </Link>
+              </li>
             </>
             {/* )} */}
           </ul>

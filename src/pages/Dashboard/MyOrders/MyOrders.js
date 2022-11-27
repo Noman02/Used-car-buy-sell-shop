@@ -25,7 +25,7 @@ const MyOrders = () => {
     <div>
       <h2 className="text-2xl font-bold">My Orders</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-12">
-        {orders.map((order) => (
+        {orders?.map((order) => (
           <MyOrder key={order._id} order={order}></MyOrder>
         ))}
       </div>

@@ -20,7 +20,7 @@ const Register = () => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    console.log(name, email, password);
+    const role = data.role;
 
     //create user
     createUser(email, password)
@@ -28,7 +28,7 @@ const Register = () => {
         const user = result.user;
         toast.success("User created successfully");
         updateUserProfile(name);
-        saveUser(name, email);
+        saveUser(name, email, role);
         console.log(user);
       })
       .catch((error) => {
@@ -37,8 +37,8 @@ const Register = () => {
       });
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -121,12 +121,14 @@ const Register = () => {
                   Choose Your Account Type
                 </label>
               </div>
-              <select className="select select-bordered w-full max-w-xs">
+              <select
+                {...register("role")}
+                className="select select-bordered w-full max-w-xs"
+              >
                 <option disabled selected>
-                  Who shot first?
+                  Buyer
                 </option>
-                <option>Han Solo</option>
-                <option>Greedo</option>
+                <option>Seller</option>
               </select>
             </div>
           </div>
@@ -138,7 +140,7 @@ const Register = () => {
               <button
                 onClick={handlePopUp}
                 aria-label="Register with Google"
-                className="text-white border border-secondary bg-red-500 flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
+                className="text-white border-secondary bg-red-500 flex items-center justify-center w-full p-2 mt-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

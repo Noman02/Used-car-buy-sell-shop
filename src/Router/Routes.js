@@ -5,6 +5,7 @@ import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import AllBuyer from "../pages/Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../pages/Dashboard/AllSeller/AllSeller";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import MakeAdmin from "../pages/Dashboard/MakeAdmin/MakeAdmin";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../pages/Dashboard/MyProducts/MyProducts";
 import Home from "../pages/Home/Home/Home";
@@ -72,6 +73,10 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard/myorders",
         element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/dashboard/makeadmin",
+        element: <MakeAdmin></MakeAdmin>,
       },
     ],
   },

@@ -20,6 +20,8 @@ const AllSeller = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
+              <th>Verify</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -28,6 +30,14 @@ const AllSeller = () => {
                 <th>{i + 1}</th>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>
+                <td>
+                  <button className="btn btn-sm btn-secondary text-white">
+                    Verify
+                  </button>
+                </td>
+                <td>
+                  <button className="btn btn-sm btn-info">Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
