@@ -9,7 +9,7 @@ const MyProducts = () => {
     queryKey: ["addproducts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/addproducts?email=${user?.email}`,
+        `https://used-cars-buy-sell-server.vercel.app/addproducts?email=${user?.email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,

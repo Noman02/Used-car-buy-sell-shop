@@ -6,7 +6,9 @@ const CategoriesBanner = () => {
   const { data: categories, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categories");
+      const res = await fetch(
+        "https://used-cars-buy-sell-server.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },

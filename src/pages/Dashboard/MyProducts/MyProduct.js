@@ -17,7 +17,7 @@ const MyProduct = ({ addProduct }) => {
   } = addProduct;
 
   const handleAvailable = (id) => {
-    fetch(`http://localhost:5000/addproducts/${id}`, {
+    fetch(`https://used-cars-buy-sell-server.vercel.app/addproducts/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -35,7 +35,7 @@ const MyProduct = ({ addProduct }) => {
   const handleDeleteProduct = (id) => {
     const agree = window.confirm("do you want to delete this product?");
     if (agree) {
-      fetch(`http://localhost:5000/addproducts/${id}`, {
+      fetch(`https://used-cars-buy-sell-server.vercel.app/addproducts/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

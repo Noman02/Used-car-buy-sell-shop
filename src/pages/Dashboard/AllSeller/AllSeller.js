@@ -7,7 +7,9 @@ const AllSeller = () => {
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://used-cars-buy-sell-server.vercel.app/users"
+      );
       const data = await res.json();
       return data;
     },
@@ -16,7 +18,7 @@ const AllSeller = () => {
   const handleDeleteSeller = (id) => {
     const agree = window.confirm("do you want to delete it?");
     if (agree) {
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://used-cars-buy-sell-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

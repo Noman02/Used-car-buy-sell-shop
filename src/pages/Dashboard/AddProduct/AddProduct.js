@@ -19,7 +19,9 @@ const AddProduct = () => {
   const { data: category, isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/category");
+      const res = await fetch(
+        "https://used-cars-buy-sell-server.vercel.app/category"
+      );
       const data = await res.json();
       return data;
     },
@@ -49,7 +51,7 @@ const AddProduct = () => {
             description: data.description,
           };
 
-          fetch("http://localhost:5000/addproducts", {
+          fetch("https://used-cars-buy-sell-server.vercel.app/addproducts", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -63,22 +65,6 @@ const AddProduct = () => {
               toast.success("Product added successfully");
               navigate("/dashboard/myproducts");
             });
-        }
-      });
-  };
-
-  const handleAvailable = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("make admin successfully");
         }
       });
   };

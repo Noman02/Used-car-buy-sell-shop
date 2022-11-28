@@ -6,7 +6,7 @@ import MyOrder from "./MyOrder/MyOrder";
 const MyOrders = () => {
   const { user } = useContext(authContext);
 
-  const url = `http://localhost:5000/orders?email=${user?.email}`;
+  const url = `https://used-cars-buy-sell-server.vercel.app/orders?email=${user?.email}`;
 
   const { data: orders = [] } = useQuery({
     queryKey: ["orders", user?.email],
