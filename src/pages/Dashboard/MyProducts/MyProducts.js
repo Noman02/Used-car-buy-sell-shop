@@ -5,11 +5,7 @@ import MyProduct from "./MyProduct";
 
 const MyProducts = () => {
   const { user } = useContext(authContext);
-  const {
-    data: addproducts = [],
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: addproducts = [], isLoading } = useQuery({
     queryKey: ["addproducts", user?.email],
     queryFn: async () => {
       const res = await fetch(

@@ -1,8 +1,7 @@
 import React from "react";
-import toast from "react-hot-toast";
 import { FaPhoneSquareAlt, FaRocketchat } from "react-icons/fa";
 
-const MyProduct = ({ addProduct }) => {
+const AdvertisedItem = ({ add }) => {
   const {
     _id,
     productName,
@@ -13,24 +12,7 @@ const MyProduct = ({ addProduct }) => {
     category,
     image,
     description,
-  } = addProduct;
-
-  const handleAvailable = (id) => {
-    fetch(`http://localhost:5000/addproducts/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("marked as a advertised");
-        }
-      });
-  };
-
+  } = add;
   return (
     <div className="my-12 lg:flex justify-around lg:w-3/4 mx-auto bg-white shadow-xl">
       <div className=" m-4">
@@ -77,7 +59,7 @@ const MyProduct = ({ addProduct }) => {
             <h3 className="ml-3 font-semibold">Chat</h3>
           </div>
         </div>
-        <div className="absolute bottom-5 right-5 flex justify-between lg:w-3/4">
+        {/* <div className="absolute bottom-5 right-5 flex justify-between lg:w-3/4">
           <button
             onClick={() => handleAvailable(_id)}
             className="btn btn-sm btn-secondary text-white"
@@ -85,10 +67,10 @@ const MyProduct = ({ addProduct }) => {
             Available
           </button>
           <button className="btn btn-sm btn-info text-white">Delete</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default MyProduct;
+export default AdvertisedItem;
