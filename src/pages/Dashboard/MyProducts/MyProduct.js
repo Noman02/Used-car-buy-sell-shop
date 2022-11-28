@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaPhoneSquareAlt, FaRocketchat } from "react-icons/fa";
 
 const MyProduct = ({ addProduct }) => {
+  const [products, setProducts] = useState([]);
   const {
     _id,
     productName,
@@ -29,6 +30,26 @@ const MyProduct = ({ addProduct }) => {
           toast.success("marked as a advertised");
         }
       });
+  };
+
+  const handleDeleteProduct = (id) => {
+    const agree = window.confirm("do you want to delete this product?");
+    if (agree) {
+      fetch(`http://localhost:5000/addproducts/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged > 0) {
+            toast.success("Product deleted successfully");
+            const remainingProducts = products.filter(
+              (user) => user._id !== id
+            );
+            setProducts(remainingProducts);
+            console.log(data);
+          }
+        });
+    }
   };
 
   return (
@@ -78,13 +99,24 @@ const MyProduct = ({ addProduct }) => {
           </div>
         </div>
         <div className="absolute bottom-5 right-5 flex justify-between lg:w-3/4">
+          {addProduct?.role === "available" ? (
+            <button className="btn btn-secondary font-bold text-white">
+              Advertised
+            </button>
+          ) : (
+            <button
+              onClick={() => handleAvailable(_id)}
+              className="btn btn-secondary text-white"
+            >
+              Available
+            </button>
+          )}
           <button
-            onClick={() => handleAvailable(_id)}
-            className="btn btn-sm btn-secondary text-white"
+            onClick={() => handleDeleteProduct(_id)}
+            className="btn btn-info text-white"
           >
-            Available
+            Delete
           </button>
-          <button className="btn btn-sm btn-info text-white">Delete</button>
         </div>
       </div>
     </div>

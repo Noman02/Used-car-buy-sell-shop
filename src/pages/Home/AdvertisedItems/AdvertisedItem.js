@@ -43,6 +43,9 @@ const AdvertisedItem = ({ add }) => {
         </h2>
       </div>
       <div className="card-body lg:w-full relative">
+        <h2 className="text-primary font-bold text-xl mb-6">
+          Product Added As A Advertised
+        </h2>
         <div className="card-actions justify-center">
           <div className="lg:flex md:flex justify-center items-center border p-4 lg:w-3/4">
             <p className="flex">
