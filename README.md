@@ -1,6 +1,6 @@
 1. Project Title: Used cars buy sell
 
-2. project live link: http://localhost:3000
+2. project live link: https://used-cars-buy-sell.web.app/
 
 3. About the Project: I have created this website for resale any second car, anyone can sell their second hand car by this website, and also they can easily buy any second car by this website.
 
