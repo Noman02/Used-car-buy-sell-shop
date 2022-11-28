@@ -61,11 +61,19 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/dashboard/allbuyer",
-        element: <AllBuyer></AllBuyer>,
+        element: (
+          <AdminRoute>
+            <AllBuyer></AllBuyer>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allseller",
-        element: <AllSeller></AllSeller>,
+        element: (
+          <AdminRoute>
+            <AllSeller></AllSeller>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/addprodut",
