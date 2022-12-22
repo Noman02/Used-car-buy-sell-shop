@@ -14,6 +14,8 @@ const CategoriesBanner = () => {
     },
   });
 
+  console.log(categories);
+
   return (
     <div className="mt-12 p-4 border-b-2 border-primary">
       <h2 className="font-bold">Browse items by category</h2>

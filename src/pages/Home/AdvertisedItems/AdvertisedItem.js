@@ -14,7 +14,7 @@ const AdvertisedItem = ({ add }) => {
     description,
   } = add;
   return (
-    <div className="my-12 lg:flex justify-around lg:w-3/4 mx-auto bg-white shadow-xl">
+    <div className="my-12 lg:flex justify-around lg:w-3/4 mx-auto bg-white shadow-xl rounded-md">
       <div className=" m-4">
         <h3 className="font-semibold text-2xl">Brand: {productName}</h3>
         <figure className="p-4">

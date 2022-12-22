@@ -14,7 +14,7 @@ const AdvertisedItems = () => {
     },
   });
   return (
-    <div className="my-12">
+    <div className="my-12 p-3">
       <h3 className="text-3xl font-semibold">Advertised Products</h3>
       <div className="mt-12">
         {advertise?.map((add) => (

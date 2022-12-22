@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const AllSeller = () => {
   const [Users, setUsers] = useState([]);
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
@@ -28,6 +28,7 @@ const AllSeller = () => {
             const remainingUsers = Users.filter((user) => user._id !== id);
             setUsers(remainingUsers);
             console.log(data);
+            refetch();
           }
         });
     }

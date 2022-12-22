@@ -9,7 +9,7 @@ const CategoryBanner = ({ categoryItem }) => {
       <div className="mt-12 hover:border-2">
         <div className="flex justify-center items-center">
           <div>
-            <img className="lg:w-28" src={picture} alt="" />
+            <img className="lg:w-28 rounded-sm" src={picture} alt="" />
           </div>
           <div className="ml-4">
             <h2 className="text-xl">{category}</h2>
